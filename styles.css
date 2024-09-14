@@ -1,0 +1,698 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-image: url(medical-background.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: stretch;
+    height: 110vh;
+    margin: 0;
+    padding: 0;
+}
+
+.chat-container {
+    width: 1000px;
+    height: 740px;
+    margin-bottom: 127px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Header Styles */
+.chat-header {
+    background: linear-gradient(135deg, #007bff, #00c6ff);
+    color: #ffffff;
+    text-align: center;
+    padding: 25px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.chat-header h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    animation: fadeInDown 1s ease-out;
+}
+
+.chat-header p {
+    margin: 5px 0 0;
+    font-size: 16px;
+    font-weight: 300;
+    animation: fadeInUp 1s ease-out;
+}
+
+.chat-header::after {
+    content: url('https://img.icons8.com/ios-filled/50/ffffff/stethoscope.png');
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.8;
+    animation: fadeInRight 1s ease-out;
+}
+
+/* Avatar Styles */
+.avatar {
+    content: url('avatar.webp');
+    position: absolute;
+    left: 20px;
+    top: 10%;
+    transform: translateY(-50%);
+    opacity: 1;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.avatar:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Chat Box Styles */
+.chat-box {
+    padding: 20px;
+    max-height: 100%;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+    flex: 1;
+    scrollbar-width: thin;
+    scrollbar-color: #007bff #f1f1f1;
+    position: relative;
+    transition: background-color 0.3s ease;
+    border-top: 1px solid #ddd;
+    /* Add a top border for separation */
+}
+
+.chat-box:hover {
+    background-color: #f4f4f4;
+}
+
+.chat-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 10%;
+    height: 2px;
+    background-color: #e0e0e0;
+    transform: translateX(-50%);
+}
+
+.chat-message {
+    margin: 15px 0;
+    padding: 12px;
+    border-radius: 10px;
+    width: fit-content;
+    max-width: 75%;
+    position: relative;
+    word-wrap: break-word;
+    animation: fadeIn 0.5s ease-in-out;
+    display: flex;
+    align-items: flex-start;
+    transition: transform 0.3s ease;
+}
+
+.chat-message:hover {
+    transform: translateX(5px);
+}
+
+/* Bot Message Styles */
+.bot-message {
+    background-color: #e3f2fd;
+    color: #333;
+    box-shadow: 0 2px 5px rgba(206, 206, 206, 0.1);
+    position: initial;
+    padding-left: 50px;
+}
+
+.bot-message::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    transform: translateY(-50%);
+    border-width: 10px;
+    border-color: transparent #e3f2fd transparent transparent;
+}
+
+.bot-message .avatar {
+    background-image: url(https://thumbs.dreamstime.com/z/isolated-robot-toy-vector-kids-illustration-149217305.jpg);
+    background-size: cover;
+    margin-left: -40px;
+    position: initial;
+    left: 0;
+    top: 5%;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* User Message Styles */
+.user-message {
+    background-color: #d4edda;
+    color: #155724;
+    margin-left: auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.user-message::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -10px;
+    transform: translateY(-50%);
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent transparent #d4edda;
+}
+
+/* Typing Indicator */
+.typing-indicator {
+    background-color: #e3f2fd;
+    color: #1cff45;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    animation: typingIndicator 1s infinite;
+    padding: 5px;
+    border-radius: 5px;
+    /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Shadow for depth */
+}
+
+.typing-indicator span {
+    display: inline-block;
+    padding: 5px;
+    animation: bounce 1s infinite alternate;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* Health Tip of the Day */
+#health-tip {
+    background-color: #d4edda;
+    color: #155724;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    top: 22%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    animation: slideInDown 1s ease;
+}
+
+/* Input Box Styles */
+.input-box {
+    display: flex;
+    padding: 15px;
+    background-color: #ffffff;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-top: 1px solid #ddd;
+    position: relative;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 30px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+    transform: scale(1.02);
+}
+
+button {
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 3px 8px rgba(0, 123, 255, 0.3);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* Scrollbar Styling */
+.chat-box::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat-box::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 10px;
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+    background-color: #007bff;
+    border-radius: 10px;
+}
+
+.chat-box::-webkit-scrollbar-thumb:hover {
+    background-color: #0056b3;
+}
+
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes typingIndicator {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Responsiveness */
+@media (max-width: 480px) {
+    .chat-container {
+        width: 90%;
+    }
+
+    .chat-box {
+        max-height: 300px;
+    }
+
+    .chat-header h2 {
+        font-size: 20px;
+    }
+
+    input[type="text"] {
+        font-size: 14px;
+        padding: 10px 18px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
+/* Appointment Container */
+.appointment-container {
+    height: 699px;
+    position: relative;
+    width: 350px;
+    max-width: 100%;
+    margin: 0;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: box-shadow 0.3s ease;
+}
+
+.appointment-container:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.appointment-container h3 {
+    font-size: 20px;
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+.appointment-container p {
+    font-size: 14px;
+    color: #333;
+}
+
+.plus-icon {
+    font-size: 40px;
+    color: #007bff;
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.plus-icon:hover {
+    transform: scale(1.1);
+}
+
+
+/* Slide Styles */
+/* Appointment Slide - Left Side */
+.appointment-slide {
+    position: fixed;
+    left: -100%;
+    /* Start off-screen to the left */
+    top: 0;
+    height: 100%;
+    width: 400px;
+    max-width: 100%;
+    background-color: #f4f4f9;
+    /* Light grey background for a clean look */
+    box-shadow: 2px 0 15px rgba(0, 0, 0, 0.3);
+    /* More pronounced shadow for emphasis */
+    transition: left 0.4s ease;
+    /* Animate the left property */
+    z-index: 1000;
+    padding: 20px;
+    overflow-y: auto;
+    border-radius: 0 15px 15px 0;
+    /* More rounded corners on the right side */
+    border: 1px solid #ddd;
+    /* Light border for better definition */
+    background-image: url('medical-icons.png');
+    /* Path to your medical icons image */
+    background-size: cover;
+    /* Adjusts the size of the background image */
+    background-position: center;
+    /* Centers the background image */
+    background-repeat: no-repeat;
+    /* Prevents the image from repeating */
+}
+
+/* Overlay for better text readability */
+.appointment-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.7);
+    /* White overlay with transparency */
+    z-index: -1;
+    /* Place the overlay behind the content */
+}
+
+/* Slide Header */
+.slide-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #007bff;
+    /* Blue border for a medical feel */
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+}
+
+.slide-header h3 {
+    margin: 0;
+    font-size: 28px;
+    color: #007bff;
+    /* Medical blue color */
+    font-family: 'Arial', sans-serif;
+    /* Clean, readable font */
+    display: flex;
+    align-items: center;
+}
+
+.slide-header h3 i {
+    margin-right: 10px;
+}
+
+.close-btn {
+    font-size: 30px;
+    color: #333;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #ff0000;
+}
+
+/* Slide Content */
+.slide-content form {
+    display: flex;
+    flex-direction: column;
+}
+
+.slide-content label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+    /* Darker text for readability */
+}
+
+.slide-content input,
+.slide-content textarea {
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    /* Slightly more rounded corners */
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.slide-content input:focus,
+.slide-content textarea:focus {
+    border-color: #007bff;
+    /* Blue border for focus */
+    outline: none;
+}
+
+.slide-content button {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.slide-content button i {
+    margin-right: 8px;
+}
+
+.slide-content button:hover {
+    background-color: #0056b3;
+}
+
+/* Appointment List */
+.appointment-list {
+    margin-top: 20px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    border: 1px solid #ddd;
+    /* Light border for better definition */
+}
+
+.appointment-list h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #007bff;
+    /* Consistent medical blue color */
+    font-family: 'Arial', sans-serif;
+    /* Clean, readable font */
+    display: flex;
+    align-items: center;
+}
+
+.appointment-list h3 i {
+    margin-right: 10px;
+}
+
+.appointment-item {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    background-color: #f9f9f9;
+    /* Light background for items */
+    border-radius: 8px;
+    /* Rounded corners for items */
+    margin-bottom: 15px;
+}
+
+.appointment-item:last-child {
+    border-bottom: none;
+}
+
+.appointment-item h4 {
+    margin: 0;
+    font-size: 20px;
+    color: #333;
+}
+
+.appointment-item p {
+    margin: 5px 0;
+    font-size: 15px;
+    color: #555;
+}
+
+/* Slide Open */
+.slide-open {
+    left: 0;
+    /* Adjust left position to open the slide */
+}
+
+/* Call Now Button */
+.call-now {
+    margin-top: 20px;
+    text-align: center;
+    background-color: #e0f7fa;
+    /* Light cyan background */
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid #b2ebf2;
+    /* Light cyan border */
+}
+
+.call-button {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #28a745;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.call-button i {
+    margin-right: 8px;
+}
+
+.call-button:hover {
+    background-color: #218838;
+}
+
+/* Responsiveness */
+@media (max-width: 480px) {
+    .appointment-slide {
+        width: 100%;
+        height: auto;
+        left: -100%;
+    }
+
+    .appointment-slide.open {
+        left: 0;
+    }
+}
+
+/* Google Maps iframe styling */
+.location {
+    position: relative;
+    margin-top: 160px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.location h3 {
+    margin-bottom: 25px;
+    font-size: 20px;
+}
+
+.location iframe {
+    margin: -10px;
+    width: 329px;
+    height: 300px;
+    border-radius: 5px;
+}

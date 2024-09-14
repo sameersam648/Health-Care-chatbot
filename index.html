@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health-Care Chat</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="appointment-container">
+        <div class="plus-icon" id="openSlide">
+            <i class="fas fa-calendar-plus"></i>
+        </div>
+
+        <div class="appointment-slide" id="appointmentSlide">
+            <div class="slide-header">
+                <h3><i class="fas fa-calendar-day"></i> Book an Appointment</h3>
+                <button class="close-btn" id="closeSlide">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="slide-content">
+                <form id="appointmentForm">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="phone">Phone:</label>
+                    <input type="tel" id="phone" name="phone" required>
+
+                    <label for="date">Date:</label>
+                    <input type="date" id="date" name="date" required>
+
+                    <label for="time">Time:</label>
+                    <input type="time" id="time" name="time" required>
+
+                    <label for="disease">Disease:</label>
+                    <input type="text" id="disease" name="disease" required>
+
+                    <label for="notes">Notes:</label>
+                    <textarea id="notes" name="notes"></textarea>
+
+                    <button type="submit"><i class="fas fa-calendar-check"></i> Book Appointment</button>
+                </form>
+
+                <!-- Call Now Button -->
+                <div class="call-now">
+                    <p><i class="fas fa-phone-alt"></i> Need immediate assistance?</p>
+                    <a href="tel:+1234567890" class="call-button"><i class="fas fa-phone"></i> Call Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="appointment-list" id="appointmentList">
+            <h3><i class="fas fa-list"></i> Your Appointments</h3>
+            <!-- Appointments will be listed here -->
+        </div> 
+
+        <div class="location">
+            <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d11101.90480959484!2d77.6569564230821!3d12.861451285757102!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1shospitals%20near%20me%20!5e1!3m2!1sen!2sin!4v1725043913905!5m2!1sen!2sin">    
+            </iframe>
+        </div>
+    </div>
+
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2>HealthBot</h2>
+            <p>Your virtual health assistant</p>
+        </div>
+        <div class="chat-box" id="chat-box">
+            <!-- Bot's health tip of the day -->
+            <div class="chat-message bot-message" id="health-tip">
+                "Health Tip: Drink at least 8 glasses of water a day to stay hydrated!"
+            </div>
+        </div>
+        <div class="input-box">
+            <input type="text" id="user-input" placeholder="Type your symptoms here..." autocomplete="on">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        <!--     script codes             -->
+    </script>
+
+    <script src="script.js"></script>
+    <script src="nhs_scrape.js"></script>
+</body>
+
+</html>
