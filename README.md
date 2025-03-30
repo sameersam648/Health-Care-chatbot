@@ -10,6 +10,7 @@ Welcome to the **HealthCare Chatbot** repository! This chatbot is designed to as
 ✅ **Appointment Booking**: Users can book appointments through the chatbot. The system only allows bookings within a 15-day window from the current date to ensure timely scheduling. 📅✅  
 ✅ **Responsive Design**: The interface is optimized for **desktop & mobile** use, providing a seamless experience across all devices. 📱💻  
 
+
 ---
 
 ## 🛠️ Technologies Used
